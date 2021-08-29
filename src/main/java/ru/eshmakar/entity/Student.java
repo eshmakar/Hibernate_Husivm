@@ -1,5 +1,7 @@
 package ru.eshmakar.entity;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -24,6 +26,11 @@ public class Student {
     @Enumerated(value = EnumType.STRING)
     private Days days;
 
+
+
+
+//    @CreationTimestamp //чтобы автоматический генерировался и записался дата и время
+//    @UpdateTimestamp //при обновлении данных, время тоже будет перезаписано
     /*чтобы использовать дату, используется @Temporal (TIMESTAMP - дата+время, Date - только дата, Time - только время)*/
     @Temporal(value = TemporalType.DATE)
     private Date date;
