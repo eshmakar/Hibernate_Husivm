@@ -6,6 +6,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.util.Date;
+
 public class Main {
     public static void main(String[] args) {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
@@ -13,7 +15,8 @@ public class Main {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 //        session.save(new Student("Max"));
-        session.save(new Student("Max", Days.FRIDAY));
+//        session.save(new Student("Max", Days.FRIDAY));
+        session.save(new Student("Max", Days.FRIDAY, new Date()));
         session.getTransaction().commit();
         session.close();
     }

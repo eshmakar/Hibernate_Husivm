@@ -1,5 +1,9 @@
 package ru.eshmakar.entity;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class Student {
@@ -16,14 +20,24 @@ public class Student {
     @Column(unique = false)
     String name;
 
-
     /*чтобы записать значения enum как есть, используется эта аннотация*/
     @Enumerated(value = EnumType.STRING)
     private Days days;
 
+    /*чтобы использовать дату, используется @Temporal (TIMESTAMP - дата+время, Date - только дата, Time - только время)*/
+    @Temporal(value = TemporalType.DATE)
+    private Date date;
+
+
     public Student(String name, Days days) {
         this.name = name;
         this.days = days;
+    }
+
+    public Student(String name, Days days, Date date) {
+        this.name = name;
+        this.days = days;
+        this.date = date;
     }
 
     public Days getDays() {
