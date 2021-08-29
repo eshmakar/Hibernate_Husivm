@@ -12,6 +12,9 @@ public class Student {
     /*optional = false - означает, что name не может быть null */
     /*fetch = FetchType.LAZY - чтобы подгрузить данные лениво, только по требованию*/
     @Basic(optional = false, fetch = FetchType.LAZY)
+
+    /* name - какое имя использовать в БД, unique - уникальные или нет, length = длина строки,  scale и precision - грубость и точность при плавающих запятых*/
+    @Column(unique = false)
     String name;
 
     public Student() {
