@@ -4,5 +4,9 @@
             <generator class="native">
             </generator>
         </id>
+
+        <!--чтобы лениво подгружать данные используется эта запись-->
+<!--        <property lazy="true" not-null="true" name="name"></property>-->
+
     </class>
 </hibernate-mapping>

@@ -1,12 +1,17 @@
 package ru.eshmakar.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Student {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+
+
+    /*optional = false - означает, что name не может быть null */
+    /*fetch = FetchType.LAZY - чтобы подгрузить данные лениво, только по требованию*/
+    @Basic(optional = false, fetch = FetchType.LAZY)
     String name;
 
     public Student() {
