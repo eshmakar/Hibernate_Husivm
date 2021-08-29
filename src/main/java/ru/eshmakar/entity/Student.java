@@ -1,5 +1,4 @@
 package ru.eshmakar.entity;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +15,24 @@ public class Student {
     /* name - какое имя использовать в БД, unique - уникальные или нет, length = длина строки,  scale и precision - грубость и точность при плавающих запятых*/
     @Column(unique = false)
     String name;
+
+
+    /*чтобы записать значения enum как есть, используется эта аннотация*/
+    @Enumerated(value = EnumType.STRING)
+    private Days days;
+
+    public Student(String name, Days days) {
+        this.name = name;
+        this.days = days;
+    }
+
+    public Days getDays() {
+        return days;
+    }
+
+    public void setDays(Days days) {
+        this.days = days;
+    }
 
     public Student() {
     }

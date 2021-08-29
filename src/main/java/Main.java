@@ -1,3 +1,4 @@
+import ru.eshmakar.entity.Days;
 import ru.eshmakar.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +12,8 @@ public class Main {
         SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.save(new Student("Max"));
+//        session.save(new Student("Max"));
+        session.save(new Student("Max", Days.FRIDAY));
         session.getTransaction().commit();
         session.close();
     }
