@@ -41,6 +41,10 @@ public class Student {
     @Formula("id+age")
     private int IdPlusAge;
 
+    //чтобы добавлять поля из класса Address
+    private Address address;
+
+
     public Student(String name, Days days) {
         this.name = name;
         this.days = days;
@@ -97,5 +101,13 @@ public class Student {
 
     public void setIdPlusAge(int idPlusAge) {
         IdPlusAge = idPlusAge;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
