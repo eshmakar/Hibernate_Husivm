@@ -1,13 +1,10 @@
-import ru.eshmakar.entity.Address;
-import ru.eshmakar.entity.Days;
-import ru.eshmakar.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
-import java.util.Date;
+import ru.eshmakar.oneToOne.HomeAddress;
+import ru.eshmakar.oneToOne.Person;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,9 +20,15 @@ public class Main {
 //        Student get = session.get(Student.class, 7);//если такого значения нет, выбрасится NullPointerException
 //        System.out.println(get.getIdPlusAge());
 
-        Student st = new Student("Max");
-        st.setAddress(new Address("Lenina", 45));//добавляем адрес студента
-        session.save(st);
+//        Student st = new Student("Max");
+//        st.setAddress(new Address("Lenina", 45));//добавляем адрес студента
+//        session.save(st);
+
+        HomeAddress homeAddress = new HomeAddress("Pushkina");
+        Person person = new Person("MIN", homeAddress);
+        homeAddress.setPerson(person);
+        session.persist(person);
+        session.persist(homeAddress);
 
         session.getTransaction().commit();
         session.close();

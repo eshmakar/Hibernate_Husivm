@@ -15,6 +15,9 @@
 <!--        <mapping resource="entity/Student.hbm.xml"/>-->
 
 <!--        либо с помощью аннотации, которые содеражатся на самом классе-->
-        <mapping class="ru.eshmakar.entity.Student"></mapping>
+
+        <!--        <mapping class="ru.eshmakar.entity.Student"></mapping>-->
+        <mapping class="ru.eshmakar.oneToOne.Person"></mapping>
+        <mapping class="ru.eshmakar.oneToOne.HomeAddress"></mapping>
     </session-factory>
 </hibernate-configuration>
