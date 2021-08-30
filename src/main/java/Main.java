@@ -15,12 +15,16 @@ public class Main {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 //        session.save(new Student("Max"));
-//        session.save(new Student("Max", Days.FRIDAY));
+        session.save(new Student("gener", Days.MONDAY));
 //        session.save(new Student("Max", Days.FRIDAY, new Date()));
-        Student load = session.load(Student.class, 4);//если такого значения нет, выбрасится ObjectNotFoundException
+
+//        Student load = session.load(Student.class, 4);//достаем по id, если такого значения нет, выбрасится ObjectNotFoundException
+//        System.out.println(load.getName());//выводим имя объекта
         Student get = session.get(Student.class, 7);//если такого значения нет, выбрасится NullPointerException
-        System.out.println(load.getName());
-        System.out.println(get.getName());
+        System.out.println(get.getIdPlusAge());
+
+
+
         session.getTransaction().commit();
         session.close();
     }

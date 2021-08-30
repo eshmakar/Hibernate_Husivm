@@ -1,5 +1,7 @@
 package ru.eshmakar.entity;
+import com.sun.javafx.beans.IDProperty;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -27,14 +29,17 @@ public class Student {
     private Days days;
 
 
-
-
 //    @CreationTimestamp //чтобы автоматический генерировался и записался дата и время
 //    @UpdateTimestamp //при обновлении данных, время тоже будет перезаписано
     /*чтобы использовать дату, используется @Temporal (TIMESTAMP - дата+время, Date - только дата, Time - только время)*/
     @Temporal(value = TemporalType.DATE)
     private Date date;
 
+
+    private int age = 20;
+
+    @Formula("id+age")
+    private int IdPlusAge;
 
     public Student(String name, Days days) {
         this.name = name;
@@ -44,6 +49,14 @@ public class Student {
     public Student(String name, Days days, Date date) {
         this.name = name;
         this.days = days;
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -78,4 +91,11 @@ public class Student {
         this.name = name;
     }
 
+    public int getIdPlusAge() {
+        return IdPlusAge;
+    }
+
+    public void setIdPlusAge(int idPlusAge) {
+        IdPlusAge = idPlusAge;
+    }
 }
