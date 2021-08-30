@@ -27,7 +27,7 @@ public class Main {
         HomeAddress homeAddress = new HomeAddress("Pushkina");
         Person person = new Person("MIN", homeAddress);
         homeAddress.setPerson(person);
-        session.persist(person);
+        session.persist(person);//persist - это тоже самое что и session.save
         session.persist(homeAddress);
 
         session.getTransaction().commit();
