@@ -35,8 +35,8 @@ public class Student {
     @Temporal(value = TemporalType.DATE)
     private Date date;
 
-
-    private int age = 20;
+//    @Transient - чтобы не в бд пропустить эту колонку, используется либо аннотация @Transient, либо просто запись transient int age; такого типа;
+    transient int age = 20;
 
     @Formula("id+age")
     private int IdPlusAge;
