@@ -6,6 +6,9 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import ru.eshmakar.oneToOne.HomeAddress;
 import ru.eshmakar.oneToOne.Person;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
@@ -24,11 +27,19 @@ public class Main {
 //        st.setAddress(new Address("Lenina", 45));//добавляем адрес студента
 //        session.save(st);
 
+//        HomeAddress homeAddress = new HomeAddress("Pushkina");
+//        Person person = new Person("MIN", homeAddress);
+//        homeAddress.setPerson(person);
+//        session.persist(person);//persist - это тоже самое что и session.save
+//        session.persist(homeAddress);
+
         HomeAddress homeAddress = new HomeAddress("Pushkina");
-        Person person = new Person("MIN", homeAddress);
+        List<HomeAddress> list = new ArrayList<>();
+        list.add(homeAddress);
+        Person person = new Person("Max", list);
         homeAddress.setPerson(person);
-        session.persist(person);//persist - это тоже самое что и session.save
         session.persist(homeAddress);
+        session.persist(person);
 
         session.getTransaction().commit();
         session.close();
