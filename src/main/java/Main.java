@@ -3,8 +3,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import ru.eshmakar.oneToOne.HomeAddress;
-import ru.eshmakar.oneToOne.Person;
+import ru.eshmakar.manyToMany.HomeAddress;
+import ru.eshmakar.manyToMany.Person;
+//import ru.eshmakar.oneToOne.HomeAddress;
+//import ru.eshmakar.oneToOne.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,17 +29,32 @@ public class Main {
 //        st.setAddress(new Address("Lenina", 45));//добавляем адрес студента
 //        session.save(st);
 
-//        HomeAddress homeAddress = new HomeAddress("Pushkina");
-//        Person person = new Person("MIN", homeAddress);
+        //@OneToOne
+//       HomeAddress homeAddress = new HomeAddress("Pushkina");
+//        Person person = new Person("Max", homeAddress);
 //        homeAddress.setPerson(person);
 //        session.persist(person);//persist - это тоже самое что и session.save
 //        session.persist(homeAddress);
 
-        HomeAddress homeAddress = new HomeAddress("Pushkina");
+        //@OneToMany
+//        HomeAddress homeAddress = new HomeAddress("Pushkina");
+//        List<HomeAddress> list = new ArrayList<>();
+//        list.add(homeAddress);
+//        Person person = new Person("Max", list);
+//        homeAddress.setPerson(person);
+//        session.persist(homeAddress);
+//        session.persist(person);
+
+        //@ManyToMany
+        HomeAddress homeAddress = new HomeAddress("Sovetskii");
         List<HomeAddress> list = new ArrayList<>();
         list.add(homeAddress);
-        Person person = new Person("Max", list);
-        homeAddress.setPerson(person);
+
+        Person person = new Person("Nikolai", list);
+        List<Person> people = new ArrayList<>();
+        people.add(person);
+        homeAddress.setPerson(people);
+
         session.persist(homeAddress);
         session.persist(person);
 
